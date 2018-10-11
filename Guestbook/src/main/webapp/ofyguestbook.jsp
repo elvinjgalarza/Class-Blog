@@ -36,7 +36,7 @@
   <header class ="w3-container w3-center w3-padding-10">
   <h1><b>The Boring Blog</b></h1> 
   <p>by Elvin and Sopheara</p>
-  <img src = "jeff.gif" class ="w3-circle" alt= "jeff" style = "width:30%">
+  <img  src = "jeff.gif" class ="w3-circle w3-animate-fading" alt= "jeff" style = "width:30%">
   </header> 
   
   
@@ -121,7 +121,7 @@ to post... clever gorl!</p>
                 
                 <!-- BLOG ENTRY USER -->
                 
-                <div class = "w3-card-4 w3-margin w3-white"> 
+                <div class = "w3-card-4 w3-margin w3-white w3-animate-opacity"> 
                 <div class = "w3-container">
                 <!-- Print title -->
                 <h1>${fn:escapeXml(greeting_title)}</h1>
