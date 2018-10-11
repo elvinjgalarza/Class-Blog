@@ -89,7 +89,11 @@ to post... clever gorl!</p>
         <%
         
         // got can't convert from Greeting to Entity when using provided code
-		for (int i = 0; i < Math.min(greetings.size(),5); i++) {
+		int post_count = 5;
+        for (int i = greetings.size()-1; i > 0; i--) {
+        	if(post_count == 0){
+        		break;
+        	}
 			Greeting greeting = greetings.get(i);
             pageContext.setAttribute("greeting_content", greeting.getContent());
             
@@ -132,6 +136,7 @@ to post... clever gorl!</p>
                 
                 <%
             }
+            post_count--;
         }
     }
 %>
