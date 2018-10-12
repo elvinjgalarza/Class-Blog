@@ -114,6 +114,7 @@ to post... clever gorl!</p>
     } 
     else {
         %>
+        
         <p>Guestbook history: '${fn:escapeXml(guestbookName)}'.</p>
         <%
         
@@ -173,9 +174,10 @@ to post... clever gorl!</p>
 
  
 	
-    
+    <div>
+    <a href="guestbook.jsp">History</a>
 	<p><a href="<%= userService.createLogoutURL(request.getRequestURI()) %>" class="button">Log out</a></p>
-
+	</div>
 
 	<!-- FOOTER -->
 	<footer class = "w3-container w3-dark-grey w3-padding-10 w3-margin-top"><p>Powered by stress and <a href = "https://www.w3schools.com/w3css/default.asp" target = "_blank">w3.css</a></p></footer>
