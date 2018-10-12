@@ -1,0 +1,5 @@
+2018-09-24 11:50:17,333 [Worker-5: Loading available Gradle versions] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2018-09-24 11:51:21,467 [main] INFO  org.mortbay.log - Logging to Logger[org.mortbay.log] via org.mortbay.log.Slf4jLog
+2018-09-24 11:51:21,469 [main] INFO  org.mortbay.log - jetty-6.1.x
+2018-09-24 11:51:21,506 [main] INFO  org.mortbay.log - Started SocketConnector@localhost:58489
+2018-09-24 11:51:30,017 [main] INFO  org.mortbay.log - Stopped SocketConnector@localhost:58489

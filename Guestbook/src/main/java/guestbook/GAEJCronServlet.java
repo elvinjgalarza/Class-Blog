@@ -17,6 +17,7 @@ import java.io.UnsupportedEncodingException;
 public class GAEJCronServlet extends HttpServlet {
 	
 	private static final Logger _logger = Logger.getLogger(GAEJCronServlet.class.getName());
+	// list of recipient emails
 	private static List<String> recipient = new ArrayList<String>();
 	
 	public static void add(String x) {

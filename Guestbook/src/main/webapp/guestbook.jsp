@@ -26,12 +26,16 @@
   <body class="w3-light-grey">
   
   
-  <!-- 
   <head>
    <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
   </head>
-  <body> -->
   
+  <!--  Nav Bar -->
+  <div class = "w3-bar w3-black w3-hidesmall">
+   	<a href="ofyguestbook.jsp" class = "w3-bar-item w3-button w3-black w3-round-xlarge">Home</a>
+  </div>
+  
+
   <!-- HEADER -->
   <header class ="w3-container w3-center w3-padding-10">
   <h1><b>The Boring Blog</b></h1> 
@@ -52,7 +56,7 @@
       pageContext.setAttribute("user", user);
 %>
 <p>Hello, ${fn:escapeXml(user.nickname)}! (You can
-<a href="<%= userService.createLogoutURL(request.getRequestURI()) %>">sign out</a>.)</p>
+<a href="<%= userService.createLogoutURL(request.getRequestURI()) %>" class = "w3-button w3-black w3-round-xlarge">sign out</a>.)</p>
 <%
     } 
     else {
@@ -60,7 +64,7 @@
 
 <div class ="w3-container w3-center w3-padding-10">
 <p>This blog... uh... finds a way.
-<a href="<%= userService.createLoginURL(request.getRequestURI()) %>">Sign in</a>
+<a href="<%= userService.createLoginURL(request.getRequestURI()) %>" class = "w3-button w3-black w3-round-xlarge">Sign in</a>
 to post... clever gorl!</p>
 </div>
 
@@ -174,10 +178,7 @@ to post... clever gorl!</p>
 
  
 	
-    <div>
-    <a href="ofyguestbook.jsp">Landing</a>
-	<p><a href="<%= userService.createLogoutURL(request.getRequestURI()) %>" class="button">Log out</a></p>
-	</div>
+   
 
 	<!-- FOOTER -->
 	<footer class = "w3-container w3-dark-grey w3-padding-10 w3-margin-top"><p>Powered by stress and <a href = "https://www.w3schools.com/w3css/default.asp" target = "_blank">w3.css</a></p></footer>
