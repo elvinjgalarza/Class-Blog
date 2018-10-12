@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cronentries>
+<cron>
+<url>/cron/gaejcronjob</url>
+<description>Send new posts every day at 5pm Central Time.</description>
+<schedule>every day 17:00</schedule>
+</cron>
+</cronentries>

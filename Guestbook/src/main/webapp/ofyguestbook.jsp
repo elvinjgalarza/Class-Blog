@@ -67,6 +67,26 @@ to post... clever gorl!</p>
 <%
     }
 %>
+
+ <%
+	//only show if user signed in
+	//it's above so they don't have to scroll down everytime they post
+ 	if(user != null){
+ %>
+ 
+	<form action="/ofyguestbook" method="post">
+      <p>Title</p>
+      <div><textarea name = "title" rows = "1" cols = "30"></textarea></div>
+      <p>Content</p>
+      <div><textarea name="content" rows="3" cols="60"></textarea></div>
+      <div><input type="submit" value="Post" /> 
+      	<input type="submit" name="clear" value = "Clear">
+      	</div>
+      <input type="hidden" name="guestbookName" value="${fn:escapeXml(guestbookName)}"/>
+    </form>
+ <% 
+ 	}
+ %>
 <%
     Key guestbookKey = KeyFactory.createKey("Guestbook", guestbookName);
     // Run an ancestor query to ensure we see the most up-to-date
@@ -74,9 +94,17 @@ to post... clever gorl!</p>
     // Register the Greeting Entity, 
 	ObjectifyService.register(Greeting.class);
     // grab the greetings,
-	List<Greeting> greetings = ObjectifyService.ofy().load().type(Greeting.class).list();   
+	List<Greeting> g = ObjectifyService.ofy().load().type(Greeting.class).list();   
 	// then sort them 
-    Collections.sort(greetings); 
+    Collections.sort(g);
+    List<Greeting> greetings;
+	if(g.size() > 5){
+		greetings = g.subList(g.size()-5,g.size());
+	}else{
+		greetings = g;
+	}
+	//Orders it so that newest post is on top
+	Collections.reverse(greetings);
     
     if (greetings.isEmpty()) {
         %>
@@ -89,32 +117,33 @@ to post... clever gorl!</p>
         <%
         
         // got can't convert from Greeting to Entity when using provided code
-		int post_count = 5;
-        for (int i = greetings.size()-1; i > 0; i--) {
-        	if(post_count == 0){
-        		break;
-        	}
-			Greeting greeting = greetings.get(i);
+		//int post_count = 5;
+        //for (int i = 0; i < greetings.size(); i--) {
+        for(Greeting greeting: greetings){
+        	//if(post_count == 0){
+        	//	break;
+        	//}
+			//Greeting greeting = greetings.get(i);
             pageContext.setAttribute("greeting_content", greeting.getContent());
             
           //Get the date attribute
             pageContext.setAttribute("greeting_date",greeting.getDate().toString());
             
-            if (greeting.getUser() == null) {
+            //if (greeting.getUser() == null) {
                 %>
                 
                 
                 
-                <!--  BLOG ENTRY ANON -->
+                <!--  BLOG ENTRY ANON 
                 <div class = "w3-card-4 w3-margin w3-white">
                 <div class = "w3-container">
                 <p>An anonymous person wrote:</p>
                 </div></div>
                 
-                
+                -->
                 <%
-            } 
-            else {
+            //} 
+            //else {
             	pageContext.setAttribute("greeting_title", greeting.getTitle());
                 pageContext.setAttribute("greeting_user", greeting.getUser());
                 %>
@@ -135,22 +164,14 @@ to post... clever gorl!</p>
                 
                 
                 <%
-            }
-            post_count--;
+            //}
+            //post_count--;
         }
     }
 %>
 
  
-
-    <form action="/ofyguestbook" method="post">
-      <p>Title</p>
-      <div><textarea name = "title" rows = "1" cols = "30"></textarea></div>
-      <p>Content</p>
-      <div><textarea name="content" rows="3" cols="60"></textarea></div>
-      <div><input type="submit" value="Post" /></div>
-      <input type="hidden" name="guestbookName" value="${fn:escapeXml(guestbookName)}"/>
-    </form>
+	
     
 	<p><a href="<%= userService.createLogoutURL(request.getRequestURI()) %>" class="button">Log out</a></p>
 
