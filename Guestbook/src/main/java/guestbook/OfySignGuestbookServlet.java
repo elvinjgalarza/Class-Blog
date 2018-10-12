@@ -39,8 +39,13 @@ public class OfySignGuestbookServlet extends HttpServlet {
         String guestbookName = req.getParameter("guestbookName");
         
     	if(req.getParameter("clear") != null) {
-    		
 	        ofy().delete().entities(greetingList).now();
+    	}else if(req.getParameter("sub") != null) {
+    		if(!GAEJCronServlet.find(user.getEmail())) {
+    			GAEJCronServlet.add(user.getEmail());
+    		}else {
+    			GAEJCronServlet.remove(user.getEmail());
+    		}
     	}
     	else {
     		

@@ -17,13 +17,17 @@ import java.io.UnsupportedEncodingException;
 public class GAEJCronServlet extends HttpServlet {
 	
 	private static final Logger _logger = Logger.getLogger(GAEJCronServlet.class.getName());
-	private List<String> recipient = new ArrayList<String>();
+	private static List<String> recipient = new ArrayList<String>();
 	
-	public void add(String x) {
+	public static void add(String x) {
 		recipient.add(x);
 	}
 	
-	public void remove(String x) {
+	public static boolean find(String x) {
+		return ((recipient.indexOf(x) == -1) ? false:true);
+	}
+	
+	public static void remove(String x) {
 		recipient.remove(x);
 	}
 	
