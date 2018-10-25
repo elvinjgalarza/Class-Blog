@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MapsApp</string>
+    <string name="title_activity_maps">My Map</string>
+    <string name="edit_message">Enter an address</string>
+    <string name="button_send">Find</string>
+
+</resources>
