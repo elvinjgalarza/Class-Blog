@@ -49,7 +49,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
 
         Intent intent = getIntent();
-        String input = intent.getStringExtra(inputActivity.EXTRA_Message);
+        String input = intent.getStringExtra(inputActivity.EXTRA_MESSAGE);
 
         // Add a marker at UT Tower and move the camera
         //LatLng utTower = new LatLng(30.286135, -97.739366);
@@ -60,7 +60,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         try{
             LatLng coordinates = decodeAddress(this.getApplicationContext(), input);
             mMap.addMarker(new MarkerOptions().position(coordinates)); // edit this for .getAddressLine
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(coordinates));
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(coordinates, 5));
         }
         catch (Exception e){
             e.printStackTrace();
@@ -74,6 +74,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      */
     public LatLng decodeAddress(Context context, String input){
 
+        //input = "1600 Amphitheatre Parkway, Mountain View, CA"; // debugging
+
         Geocoder geocoder = new Geocoder(context);
         List<Address> list_of_addresses; // will really only ever be one address present
         LatLng coordinates = null;
@@ -85,6 +87,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             if(list_of_addresses == null){ // if somehow there wasn't an address typed in
                 return null;
             }
+
 
             Address address = list_of_addresses.get(0); // get the address that was typed in
 

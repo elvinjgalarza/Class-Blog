@@ -10,7 +10,7 @@ import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
 public class inputActivity extends AppCompatActivity {
 
-    public final static String EXTRA_Message = "com.example.inputActivity.MESSAGE";
+    public final static String EXTRA_MESSAGE = "com.example.inputActivity.MESSAGE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
