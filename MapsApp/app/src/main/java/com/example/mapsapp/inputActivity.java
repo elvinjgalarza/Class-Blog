@@ -18,6 +18,7 @@ public class inputActivity extends AppCompatActivity {
         setContentView(R.layout.activity_input);
     }
 
+    // when the button is clicked, this method is called
     public void sendInput(View view){
         Intent intent = new Intent(this, MapsActivity.class);
         EditText editText = (EditText) findViewById(R.id.edit_message);
