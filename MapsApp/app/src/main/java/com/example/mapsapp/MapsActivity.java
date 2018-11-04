@@ -1,5 +1,7 @@
 package com.example.mapsapp;
 
+// https://github.com/elvinjgalarza/Class-Blog/tree/master/MapsApp
+
 // String Format types: street_number + route + locality + county + state + country + zipcode
 
 import android.content.Intent;
@@ -59,8 +61,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         try{
             LatLng coordinates = decodeAddress(this.getApplicationContext(), input);
-            mMap.addMarker(new MarkerOptions().position(coordinates)); // edit this for .getAddressLine
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(coordinates, 5));
+            mMap.addMarker(new MarkerOptions().position(coordinates).title(input)); // edit this for .getAddressLine
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(coordinates));
+            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates, 16));
+
+
         }
         catch (Exception e){
             e.printStackTrace();
